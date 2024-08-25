@@ -17,5 +17,11 @@
 
   outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
   {
+    darwinConfigurations = (
+      import ./darwin {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs nix-darwin home-manager;
+      }
+    );
   };
 }
