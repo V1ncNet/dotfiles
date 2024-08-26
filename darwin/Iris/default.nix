@@ -1,6 +1,10 @@
 { pkgs, system, vars,... }:
 
 {
+  imports = [
+    ../../modules/zsh
+  ];
+
   users.users.${vars.username} = {
     home = "/Users/${vars.username}";
   };
