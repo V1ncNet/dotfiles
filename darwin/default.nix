@@ -16,6 +16,7 @@ in {
     specialArgs = { inherit inputs system pkgs; };
 
     modules = [
+      ./Iris
     ];
   };
 }
