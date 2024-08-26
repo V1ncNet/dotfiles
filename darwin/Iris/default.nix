@@ -5,6 +5,7 @@
     ../../modules/common
     ../../modules/zsh
     ./environment.nix
+    ./homebrew.nix
   ];
 
   users.users.${vars.username} = {
