@@ -2,6 +2,11 @@
 
 {
   environment = {
+    variables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
+    };
+
     systemPackages = with pkgs; [
       ansible
       ansible-lint
