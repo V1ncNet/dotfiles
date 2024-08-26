@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../modules/common
     ../../modules/zsh
   ];
 
