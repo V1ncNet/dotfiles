@@ -1,6 +1,10 @@
-{ pkgs, system,... }:
+{ pkgs, system, vars,... }:
 
 {
+  users.users.${vars.username} = {
+    home = "/Users/${vars.username}";
+  };
+
   nixpkgs.hostPlatform = system;
 
   services = {
