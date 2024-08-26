@@ -4,6 +4,7 @@
   imports = [
     ../../modules/common
     ../../modules/zsh
+    ./environment.nix
   ];
 
   users.users.${vars.username} = {
