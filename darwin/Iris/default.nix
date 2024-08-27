@@ -4,6 +4,7 @@
   imports = [
     ../../modules/common
     ../../modules/zsh
+    ./system.nix
     ./environment.nix
     ./homebrew.nix
   ];
