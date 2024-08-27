@@ -12,6 +12,8 @@
     home = "/Users/${vars.username}";
   };
 
+  home-manager.users.${vars.username} = import ./home.nix;
+
   nixpkgs.hostPlatform = system;
 
   services = {
