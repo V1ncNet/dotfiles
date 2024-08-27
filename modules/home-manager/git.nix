@@ -23,6 +23,7 @@
 
       rebase = {
         autoStash = true;
+        rebaseMerges = "no-rebase-cousins";
       };
 
       init = {
