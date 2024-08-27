@@ -21,6 +21,16 @@ in {
 
     modules = [
       ./Iris
+      home-manager.darwinModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+
+        home-manager.users.${vars.username}.home = {
+          username = "${vars.username}";
+          homeDirectory = "/Users/${vars.username}";
+          stateVersion = "24.05";
+        };
+      }
     ];
   };
 }
