@@ -1,4 +1,4 @@
-{ pkgs, system, vars,... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -9,13 +9,17 @@
     ./homebrew.nix
   ];
 
-  users.users.${vars.username} = {
-    home = "/Users/${vars.username}";
+  users.users.vincent = {
+    home = "/Users/vincent";
+    shell = pkgs.zsh;
   };
 
-  home-manager.users.${vars.username} = import ./home.nix;
+  home-manager.users.vincent = import ./home.nix;
 
-  nixpkgs.hostPlatform = system;
+  nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   services = {
     nix-daemon.enable = true;

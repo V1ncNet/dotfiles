@@ -1,10 +1,6 @@
-{ pkgs, vars,... }:
+{ pkgs, ... }:
 
 {
-  users.users.${vars.username} = {
-    shell = pkgs.zsh;
-  };
-
   environment = {
     loginShell = pkgs.zsh;
 
