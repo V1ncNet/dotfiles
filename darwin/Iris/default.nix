@@ -33,6 +33,7 @@
     settings = {
       experimental-features = "nix-command flakes";
       trusted-users = [ "root" "vincent" "@admin" ];
+      auto-optimise-store = true;
     };
 
     gc = {
