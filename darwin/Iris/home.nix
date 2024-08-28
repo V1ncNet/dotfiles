@@ -47,6 +47,12 @@
     };
 
     zsh = {
+      profileExtra = ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        export PATH="$PATH:/Users/vincent/Library/Application Support/JetBrains/Toolbox/scripts"
+      '';
+
       shellAliases = {
         nixswitch = "darwin-rebuild switch --flake ~/src/vinado/dotfiles/.#";
       };
