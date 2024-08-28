@@ -21,6 +21,8 @@
       stats
       yq
     ];
+
+    darwinConfig = "$HOME/src/vinado/dotfiles/darwin/Iris/default.nix";
   };
 
   fonts.packages = with pkgs; [
