@@ -13,7 +13,7 @@
           stateVersion = "24.05";
         };
       }
-      ./base.nix
+      ./bach.nix
     ];
   };
 
@@ -29,7 +29,7 @@
           stateVersion = "24.05";
         };
       }
-      ./base.nix
+      ./ceres.nix
     ];
   };
 
@@ -45,7 +45,7 @@
           stateVersion = "24.05";
         };
       }
-      ./base.nix
+      ./sagittarius.nix
     ];
   };
 }
