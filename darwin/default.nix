@@ -4,11 +4,11 @@
   iris = nix-darwin.lib.darwinSystem {
     modules = [
       mac-app-util.darwinModules.default
-      ./Iris
+      ./iris
       home-manager.darwinModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.vincent = import ./Iris/home.nix;
+        home-manager.users.vincent = import ./iris/home.nix;
         home-manager.sharedModules = [
           mac-app-util.homeManagerModules.default
         ];
