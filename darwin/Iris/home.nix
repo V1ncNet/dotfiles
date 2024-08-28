@@ -37,6 +37,11 @@
       homedir = "${config.home.homeDirectory}/.gnupg";
     };
 
+    starship.settings.character = {
+      success_symbol = "[▶](bold green)";
+      error_symbol = "[▶](bold red)";
+    };
+
     zsh = {
       shellAliases = {
         nixswitch = "darwin-rebuild switch --flake ~/src/vinado/dotfiles/.#";
