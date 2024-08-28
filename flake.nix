@@ -13,14 +13,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, mac-app-util }:
   {
     darwinConfigurations = (
       import ./darwin {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nix-darwin home-manager;
+        inherit inputs nixpkgs nix-darwin home-manager mac-app-util;
       }
     );
 
