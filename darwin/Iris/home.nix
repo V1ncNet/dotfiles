@@ -4,6 +4,10 @@
   imports = (import ../../modules/home-manager);
 
   home = {
+    username = "vincent";
+    homeDirectory = "/Users/vincent";
+    stateVersion = "24.05";
+
     packages = with pkgs; [
       direnv
       fzf

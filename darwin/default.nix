@@ -7,12 +7,7 @@
       home-manager.darwinModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-
-        home-manager.users.vincent.home = {
-          username = "vincent";
-          homeDirectory = "/Users/vincent";
-          stateVersion = "24.05";
-        };
+        home-manager.users.vincent = import ./Iris/home.nix;
       }
     ];
   };

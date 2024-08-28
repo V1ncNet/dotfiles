@@ -14,8 +14,6 @@
     shell = pkgs.zsh;
   };
 
-  home-manager.users.vincent = import ./home.nix;
-
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config = {
     allowUnfree = true;
