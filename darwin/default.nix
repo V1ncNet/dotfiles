@@ -1,7 +1,7 @@
 { inputs, nixpkgs, nix-darwin, home-manager, mac-app-util, ...}:
 
 {
-  Iris = nix-darwin.lib.darwinSystem {
+  iris = nix-darwin.lib.darwinSystem {
     modules = [
       mac-app-util.darwinModules.default
       ./Iris
