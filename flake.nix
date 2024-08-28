@@ -23,5 +23,12 @@
         inherit inputs nixpkgs nix-darwin home-manager;
       }
     );
+
+    homeConfigurations = (
+      import ./nix {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs home-manager;
+      }
+    );
   };
 }
