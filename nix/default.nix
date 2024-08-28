@@ -13,7 +13,7 @@
           stateVersion = "24.05";
         };
       }
-      ./bach.nix
+      ./base.nix
     ];
   };
 }
