@@ -50,5 +50,9 @@
       "whatsapp"
       "zed"
     ];
+
+    masApps = {
+      forScore = 363738376;
+    };
   };
 }
