@@ -35,6 +35,7 @@
       "postman"
       "signal"
       "spotify"
+      "stats"
       "steam"
       "teamspeak-client"
       "telegram"

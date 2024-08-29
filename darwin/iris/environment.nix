@@ -18,7 +18,6 @@
       maven
       pandoc
       plantuml
-      stats
       yq
     ];
 
