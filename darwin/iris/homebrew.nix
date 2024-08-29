@@ -7,8 +7,15 @@
     ];
 
     brews = [
+      "cairo"
       "dotenvx/brew/dotenvx"
+      "giflib"
+      "jpeg"
+      "libpng"
+      "librsvg"
       "nvm"
+      "pango"
+      "pkg-config"
     ];
 
     casks = [
