@@ -19,6 +19,8 @@
       maven
       pandoc
       plantuml
+      python312
+      python312Packages.pip
       yq
     ];
 
