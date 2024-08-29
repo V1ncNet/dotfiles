@@ -72,7 +72,6 @@
           "ansible"
           "brew"
           "gpg-agent"
-          "iterm2"
           "mvn"
           "node"
           "npm"
@@ -82,7 +81,6 @@
 
         extraConfig = ''
           zstyle ':omz:plugins:nvm' lazy yes
-          zstyle ':omz:plugins:iterm2' shell-integration yes
         '';
       };
     };
