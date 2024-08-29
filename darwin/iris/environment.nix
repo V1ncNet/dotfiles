@@ -15,6 +15,7 @@
       hcloud
       imagemagick
       jq
+      mas
       maven
       pandoc
       plantuml
