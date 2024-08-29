@@ -25,6 +25,7 @@
       "firefox"
       "google-chrome"
       "iterm2"
+      "jamulus"
       "jetbrains-toolbox"
       "keepassxc"
       "mactex-no-gui"
