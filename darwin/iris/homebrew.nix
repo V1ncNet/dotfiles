@@ -26,6 +26,7 @@
       "audacity"
       "blender"
       "deepl"
+      "chatgpt"
       "discord"
       "docker"
       "element"
