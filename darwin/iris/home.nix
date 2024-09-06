@@ -57,16 +57,16 @@
         eval "$(/opt/homebrew/bin/brew shellenv)"
       '';
 
-      shellAliases = {
-        nixswitch = "darwin-rebuild switch --flake ~/src/vinado/dotfiles/.#";
-      };
-
       envExtra = ''
         JAVA_HOME="$(/usr/libexec/java_home -v 21)"
 
         path+=$HOME/.local/bin
         path+=$HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
       '';
+
+      shellAliases = {
+        nixswitch = "darwin-rebuild switch --flake ~/src/vinado/dotfiles/.#";
+      };
 
       oh-my-zsh = {
         plugins = [
