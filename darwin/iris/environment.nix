@@ -8,8 +8,6 @@
     };
 
     systemPackages = with pkgs; [
-      ansible
-      ansible-lint
       ffmpeg-full
       graphviz
       hcloud
@@ -20,7 +18,6 @@
       pandoc
       plantuml
       python312
-      python312Packages.pip
       yq
     ];
 
