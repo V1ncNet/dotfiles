@@ -55,8 +55,6 @@
     zsh = {
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
-
-        export PATH="$PATH:/Users/vincent/Library/Application Support/JetBrains/Toolbox/scripts"
       '';
 
       shellAliases = {
@@ -64,13 +62,10 @@
       };
 
       envExtra = ''
-        typeset -U path PATH
-        path+=(~/.local/bin)
+        JAVA_HOME="$(/usr/libexec/java_home -v 21)"
 
-        JAVA_HOME="$(/usr/libexec/java_home -v 11)"
-        VISUAL="$EDITOR"
-
-        export PATH
+        path+=$HOME/.local/bin
+        path+=$HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
       '';
 
       oh-my-zsh = {
