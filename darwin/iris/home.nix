@@ -27,7 +27,13 @@
     direnv.enable = true;
     fzf.enable = true;
     command-not-found.enable = true;
-    zoxide.enable = true;
+
+    zoxide = {
+      enable = true;
+      options = [
+        "--cmd cd"
+      ];
+    };
 
     git = {
       signing = {

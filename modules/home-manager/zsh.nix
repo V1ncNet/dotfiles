@@ -13,7 +13,6 @@
 
     localVariables = {
       HIST_STAMPS = "yyyy-mm-dd";
-      ZOXIDE_CMD_OVERRIDE = "cd";
       PYTHON_AUTO_VRUN = true;
       PYTHON_VENV_NAME = ".venv";
     };
