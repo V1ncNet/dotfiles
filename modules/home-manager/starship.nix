@@ -41,6 +41,10 @@
         disabled = true;
       };
 
+      git_branch = {
+        format = "[$symbol$branch(:$remote_branch)]($style) ";
+      };
+
       git_commit = {
         disabled = false;
         only_detached = false;
