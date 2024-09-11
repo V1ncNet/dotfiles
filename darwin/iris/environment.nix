@@ -18,6 +18,7 @@
       pandoc
       plantuml
       python312
+      wget
       yq
     ];
 
