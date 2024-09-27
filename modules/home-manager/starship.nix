@@ -45,12 +45,6 @@
         format = "[$symbol$branch(:$remote_branch)]($style) ";
       };
 
-      git_commit = {
-        disabled = false;
-        only_detached = false;
-        tag_disabled = false;
-      };
-
       palettes.dracula = {
         background = "#282a36";
         current_line = "#44475a";
