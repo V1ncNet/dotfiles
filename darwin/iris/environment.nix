@@ -15,6 +15,7 @@
       jq
       mas
       maven
+      ollama
       pandoc
       plantuml
       python312
