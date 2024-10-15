@@ -52,6 +52,7 @@
       "teamspeak-client"
       "telegram"
       "temurin@8"
+      "unity-hub"
       "viscosity"
       "visual-studio-code"
       "vlc"
