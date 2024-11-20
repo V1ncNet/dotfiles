@@ -31,6 +31,7 @@
     cardo
     crimson-pro
     montserrat
+    roboto
     (nerdfonts.override {
       fonts = [
         "Hack"
