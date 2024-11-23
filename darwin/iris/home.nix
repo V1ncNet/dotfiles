@@ -79,6 +79,7 @@
           "npm"
           "nvm"
           "pip"
+          "taskwarrior"
         ];
 
         extraConfig = ''

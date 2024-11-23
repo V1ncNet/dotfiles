@@ -19,6 +19,7 @@
       pandoc
       plantuml
       python312
+      taskwarrior3
       vim
       wget
       yq
