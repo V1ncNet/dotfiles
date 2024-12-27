@@ -10,6 +10,7 @@
       "cairo"
       "dotenvx/brew/dotenvx"
       "giflib"
+      "hidapi"
       "jpeg"
       "libpng"
       "librsvg"
