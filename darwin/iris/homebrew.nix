@@ -36,6 +36,7 @@
       "docker"
       "element"
       "firefox"
+      "ghostty"
       "google-chrome"
       "iterm2"
       "jamulus"
