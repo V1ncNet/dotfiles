@@ -58,6 +58,10 @@
 
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+          source $GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration
+        fi
       '';
 
       envExtra = ''
