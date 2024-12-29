@@ -12,6 +12,7 @@
       direnv
       fzf
       gnupg
+      rustup
       zoxide
     ];
 
