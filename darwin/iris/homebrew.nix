@@ -30,6 +30,7 @@
       "affinity-publisher"
       "audacity"
       "blender"
+      "cursor"
       "deepl"
       "chatgpt"
       "discord"
