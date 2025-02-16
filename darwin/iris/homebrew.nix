@@ -61,6 +61,7 @@
       "vlc"
       "whatsapp"
       "zed"
+      "zen-browser"
     ];
 
     masApps = {
