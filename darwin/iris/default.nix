@@ -19,19 +19,17 @@
     allowUnfree = true;
   };
 
-  services = {
-    nix-daemon.enable = true;
-  };
-
   nix = {
+    enable = true;
     package = pkgs.nix;
-    configureBuildUsers = true;
-    useDaemon = true;
 
     settings = {
       experimental-features = "nix-command flakes";
       trusted-users = [ "root" "vincent" "@admin" ];
-      auto-optimise-store = true;
+    };
+
+    optimise = {
+      automatic = true;
     };
 
     gc = {

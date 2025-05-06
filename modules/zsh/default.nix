@@ -2,8 +2,6 @@
 
 {
   environment = {
-    loginShell = pkgs.zsh;
-
     shells = with pkgs; [
       zsh
     ];

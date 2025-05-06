@@ -33,10 +33,6 @@
     crimson-pro
     montserrat
     roboto
-    (nerdfonts.override {
-      fonts = [
-        "Hack"
-      ];
-    })
+    nerd-fonts.hack
   ];
 }
