@@ -66,7 +66,6 @@
 
     masApps = {
       Enchanted = 6474268307;
-      LanguageTool = 1534275760;
       Keynote = 409183694;
       Nitefall = 1575190591;
       Numbers = 409203825;
