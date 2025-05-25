@@ -59,7 +59,6 @@
       "viscosity"
       "visual-studio-code"
       "vlc"
-      "whatsapp"
       "zed"
       "zen-browser"
     ];
@@ -71,6 +70,7 @@
       Numbers = 409203825;
       Pages = 409201541;
       forScore = 363738376;
+      WhatsApp = 310633997;
     };
   };
 }
