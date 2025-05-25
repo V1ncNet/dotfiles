@@ -6,6 +6,8 @@
     hostName = "iris";
   };
 
+  system.primaryUser = "vincent";
+
   system.activationScripts.extraActivation.text = ''
     ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
     ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
