@@ -30,7 +30,6 @@
       "affinity-publisher"
       "audacity"
       "blender"
-      "cursor"
       "deepl"
       "chatgpt"
       "discord"
@@ -59,8 +58,6 @@
       "viscosity"
       "visual-studio-code"
       "vlc"
-      "zed"
-      "zen-browser"
     ];
 
     masApps = {
