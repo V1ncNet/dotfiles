@@ -54,7 +54,7 @@
     };
 
     zsh = {
-      dotDir = ".config/zsh";
+      dotDir = "${config.home.homeDirectory}/.config/zsh";
 
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
