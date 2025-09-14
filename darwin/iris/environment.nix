@@ -15,6 +15,7 @@
       jq
       mas
       maven
+      minikube
       ollama
       pandoc
       plantuml

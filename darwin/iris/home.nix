@@ -74,6 +74,7 @@
 
       shellAliases = {
         nixswitch = "darwin-rebuild switch --flake ~/src/vinado/dotfiles/.#";
+        kubectl = "minikube kubectl --";
       };
 
       oh-my-zsh = {
