@@ -13,6 +13,7 @@
       hcloud
       imagemagick
       jq
+      kubernetes-helm
       mas
       maven
       minikube
