@@ -34,7 +34,6 @@
       "firefox"
       "ghostty"
       "google-chrome"
-      "iterm2"
       "jamulus"
       "jetbrains-toolbox"
       "keepassxc"
