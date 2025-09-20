@@ -6,7 +6,7 @@
   home = {
     username = "vincent";
     homeDirectory = "/Users/vincent";
-    stateVersion = "24.05";
+    stateVersion = "25.05";
 
     packages = with pkgs; [
       direnv
