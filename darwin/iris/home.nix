@@ -66,7 +66,6 @@
 
       envExtra = ''
         JAVA_HOME="$(/usr/libexec/java_home -v 21)"
-        CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include -I/opt/homebrew/opt/openjdk@17/include -I/opt/homebrew/opt/openjdk@21/include -I/opt/homebrew/opt/openjdk/include"
 
         path+=$HOME/.local/bin
         path+=$HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
