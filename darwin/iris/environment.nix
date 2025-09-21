@@ -13,10 +13,8 @@
       hcloud
       imagemagick
       jq
-      kubernetes-helm
       mas
       maven
-      minikube
       ollama
       pandoc
       plantuml
