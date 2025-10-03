@@ -39,6 +39,7 @@
       "keepassxc"
       "mactex-no-gui"
       "minecraft"
+      "musescore"
       "nextcloud"
       "obs"
       "postman"
