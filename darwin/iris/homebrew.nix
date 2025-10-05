@@ -13,6 +13,7 @@
       "hidapi"
       "jpeg"
       "libpng"
+      "libpq"
       "librsvg"
       "nvm"
       "pango"
