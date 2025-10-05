@@ -29,7 +29,7 @@
       "deepl"
       "chatgpt"
       "discord"
-      "docker"
+      "docker-desktop"
       "element"
       "firefox"
       "ghostty"
