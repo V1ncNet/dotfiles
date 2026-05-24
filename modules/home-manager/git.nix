@@ -5,45 +5,50 @@
 
   programs.git = {
     enable = true;
-    userName = "Vincent Nadoll";
-    userEmail = "vincent.nadoll@googlemail.com";
 
-    aliases = {
-      resotre = "restore";
-    };
-
-    extraConfig = {
-      commit = {
-        verbose = true;
+    settings = {
+      user = {
+        name = "Vincent Nadoll";
+        email = "vincent.nadoll@googlemail.com";
       };
 
-      pull = {
-        rebase = true;
+      aliases = {
+        resotre = "restore";
       };
 
-      rebase = {
-        autoStash = true;
-        rebaseMerges = "no-rebase-cousins";
-      };
+      extraConfig = {
+        commit = {
+          verbose = true;
+        };
 
-      init = {
-        defaultBranch = "main";
-      };
+        pull = {
+          rebase = true;
+        };
 
-      push = {
-        autoSetupRemote = true;
-      };
+        rebase = {
+          autoStash = true;
+          rebaseMerges = "no-rebase-cousins";
+        };
 
-      column = {
-        ui = "auto";
-      };
+        init = {
+          defaultBranch = "main";
+        };
 
-      branch = {
-        sort = "-committerdate";
-      };
+        push = {
+          autoSetupRemote = true;
+        };
 
-      rerere = {
-        enabled = true;
+        column = {
+          ui = "auto";
+        };
+
+        branch = {
+          sort = "-committerdate";
+        };
+
+        rerere = {
+          enabled = true;
+        };
       };
     };
 
