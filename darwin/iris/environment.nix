@@ -8,6 +8,7 @@
     };
 
     systemPackages = with pkgs; [
+      asciidoctor-with-extensions
       ffmpeg-full
       graphviz
       hcloud
