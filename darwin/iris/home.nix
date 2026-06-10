@@ -20,6 +20,10 @@
       default-cache-ttl 600
       max-cache-ttl 7200
     '';
+
+    sessionVariables = {
+      DIAGRAM_DITAA_CLASSPATH = "${pkgs.ditaa}/lib/ditaa.jar";
+    };
   };
 
   programs = {

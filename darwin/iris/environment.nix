@@ -9,6 +9,7 @@
 
     systemPackages = with pkgs; [
       asciidoctor-with-extensions
+      ditaa
       ffmpeg-full
       graphviz
       hcloud
