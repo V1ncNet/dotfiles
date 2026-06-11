@@ -16,39 +16,37 @@
         resotre = "restore";
       };
 
-      extraConfig = {
-        commit = {
-          verbose = true;
-        };
+      commit = {
+        verbose = true;
+      };
 
-        pull = {
-          rebase = true;
-        };
+      pull = {
+        rebase = true;
+      };
 
-        rebase = {
-          autoStash = true;
-          rebaseMerges = "no-rebase-cousins";
-        };
+      rebase = {
+        autoStash = true;
+        rebaseMerges = "no-rebase-cousins";
+      };
 
-        init = {
-          defaultBranch = "main";
-        };
+      init = {
+        defaultBranch = "main";
+      };
 
-        push = {
-          autoSetupRemote = true;
-        };
+      push = {
+        autoSetupRemote = true;
+      };
 
-        column = {
-          ui = "auto";
-        };
+      column = {
+        ui = "auto";
+      };
 
-        branch = {
-          sort = "-committerdate";
-        };
+      branch = {
+        sort = "-committerdate";
+      };
 
-        rerere = {
-          enabled = true;
-        };
+      rerere = {
+        enabled = true;
       };
     };
 
