@@ -17,6 +17,7 @@
       jq
       mas
       maven
+      obsidian
       ollama
       pandoc
       plantuml
