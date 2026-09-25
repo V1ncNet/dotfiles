@@ -10,6 +10,12 @@
     ];
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   programs = {
     home-manager.enable = true;
     dircolors.enable = true;
