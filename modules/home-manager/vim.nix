@@ -16,7 +16,6 @@
       dracula-vim
       fzf-vim
       vim-nix
-      vim-git
       zoxide-vim
     ];
 
