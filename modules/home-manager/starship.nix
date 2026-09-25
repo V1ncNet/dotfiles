@@ -17,7 +17,12 @@
         "$character"
       ];
       right_format = lib.concatStrings [
-        "$all"
+        "$git_branch"
+        "$git_status"
+        "$java"
+        "$nodejs"
+        "$python"
+        "\${env_var.VIRTUAL_ENV}"
       ];
 
       username = {
@@ -36,12 +41,33 @@
         repo_root_style = "bold cyan";
       };
 
-      docker_context = {
-        disabled = true;
-      };
-
       git_branch = {
         format = "[$symbol$branch(:$remote_branch)]($style) ";
+      };
+
+      git_status = {
+        format = "([$all_status$ahead_behind]($style) )";
+      };
+
+      # Project type only, without versions
+      java = {
+        format = "[$symbol]($style) ";
+        symbol = "";
+      };
+
+      nodejs = {
+        format = "[$symbol]($style) ";
+        symbol = "";
+      };
+
+      python = {
+        format = "[$symbol]($style) ";
+        symbol = "";
+      };
+
+      env_var.VIRTUAL_ENV = {
+        format = "[venv]($style) ";
+        style = "yellow";
       };
     };
   };
