@@ -8,10 +8,6 @@
       "msitarzewski/agency-agents"
     ];
 
-    brews = [
-      "nvm"
-    ];
-
     casks = [
       "adobe-acrobat-reader"
       "affinity"

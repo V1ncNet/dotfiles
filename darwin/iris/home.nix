@@ -17,6 +17,7 @@ in
 
     packages = with pkgs; [
       direnv
+      fnm
       fzf
       gnupg
       rustup
@@ -89,6 +90,8 @@ in
       '';
 
       initContent = ''
+        eval "$(${lib.getExe pkgs.fnm} env --use-on-cd --version-file-strategy=recursive --shell zsh)"
+
         appearance() {
           [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == Dark ]] && echo dark || echo light
         }
@@ -110,14 +113,9 @@ in
           "mvn"
           "node"
           "npm"
-          "nvm"
           "pip"
           "taskwarrior"
         ];
-
-        extraConfig = ''
-          zstyle ':omz:plugins:nvm' lazy yes
-        '';
       };
     };
   };
