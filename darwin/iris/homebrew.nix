@@ -30,6 +30,7 @@
       "nextcloud"
       "obsidian"
       "obs"
+      "ollama-app"
       "postman"
       "signal"
       "spotify"

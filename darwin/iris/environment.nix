@@ -19,7 +19,6 @@
       jq
       mas
       maven
-      ollama
       pandoc
       pdftk
       pgloader
