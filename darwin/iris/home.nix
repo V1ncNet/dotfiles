@@ -25,6 +25,11 @@ in
       max-cache-ttl 7200
     '';
 
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+    ];
+
     sessionVariables = {
       DIAGRAM_DITAA_CLASSPATH = "${pkgs.ditaa}/lib/ditaa.jar";
       JAVA_HOME = "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home";
@@ -76,8 +81,6 @@ in
       '';
 
       envExtra = ''
-        path+=$HOME/.local/bin
-        path+=$HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
       '';
 
       initContent = ''
