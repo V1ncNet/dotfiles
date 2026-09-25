@@ -27,6 +27,12 @@
       trusted-users = [ "root" "vincent" "@admin" ];
     };
 
+    # Builds the Home Manager configurations of the Linux hosts locally
+    linux-builder = {
+      enable = true;
+      ephemeral = true;
+    };
+
     optimise = {
       automatic = true;
     };
