@@ -13,11 +13,6 @@
   };
 
   programs = {
-    direnv = {
-      enable = true;
-      silent = true;
-    };
-
     gnupg.agent = {
       enable = true;
     };

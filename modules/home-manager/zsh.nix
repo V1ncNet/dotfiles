@@ -85,6 +85,7 @@
 
   programs.dircolors.enableZshIntegration = true;
   programs.direnv.enableZshIntegration = true;
+  programs.direnv.silent = true;
   programs.fzf.enableZshIntegration = true;
   programs.zoxide.enableZshIntegration = true;
 }
