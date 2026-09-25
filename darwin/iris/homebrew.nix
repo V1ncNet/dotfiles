@@ -4,18 +4,12 @@
 
     onActivation.upgrade = true;
 
-    taps = [
-      "dotenvx/brew"
-    ];
-
     brews = [
       "cairo"
-      "dotenvx/brew/dotenvx"
       "giflib"
       "hidapi"
       "jpeg"
       "libpng"
-      "libpq"
       "librsvg"
       "nvm"
       "pango"

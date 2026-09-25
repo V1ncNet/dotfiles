@@ -10,7 +10,9 @@
     systemPackages = with pkgs; [
       asciidoctor-with-extensions
       ditaa
+      dotenvx
       ffmpeg-full
+      gh
       graphviz
       hcloud
       imagemagick
@@ -20,9 +22,13 @@
       obsidian
       ollama
       pandoc
+      pdftk
+      pgloader
       plantuml
+      postgresql
       python3
       taskwarrior3
+      uv
       vim
       wget
       yq
