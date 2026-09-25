@@ -5,7 +5,10 @@ let
   taskTheme = "${config.xdg.stateHome}/task/theme";
 in
 {
-  imports = (import ../../modules/home-manager) ++ [ ./ghostty.nix ];
+  imports = (import ../../modules/home-manager) ++ [
+    ./claude-code.nix
+    ./ghostty.nix
+  ];
 
   home = {
     username = "vincent";
