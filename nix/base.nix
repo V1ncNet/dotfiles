@@ -26,6 +26,11 @@
 
     zsh = {
       envExtra = ''
+        # Also for non-interactive shells, e.g. commands run via SSH
+        if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+          . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+        fi
+
         typeset -U path PATH
         path+=(~/.local/bin)
 
