@@ -21,7 +21,7 @@
       ollama
       pandoc
       plantuml
-      python312
+      python3
       taskwarrior3
       vim
       wget
