@@ -32,6 +32,9 @@ in
 
     sessionVariables = {
       DIAGRAM_DITAA_CLASSPATH = "${pkgs.ditaa}/lib/ditaa.jar";
+      HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
+      HOMEBREW_PREFIX = "/opt/homebrew";
+      HOMEBREW_REPOSITORY = "/opt/homebrew";
       JAVA_HOME = "/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home";
     };
   };
@@ -76,11 +79,10 @@ in
     zsh = {
       dotDir = "${config.home.homeDirectory}/.config/zsh";
 
-      profileExtra = ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      '';
-
       envExtra = ''
+        # Append Homebrew so that Nix takes precedence
+        typeset -U path
+        path+=(/opt/homebrew/bin /opt/homebrew/sbin)
       '';
 
       initContent = ''
