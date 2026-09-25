@@ -25,7 +25,6 @@
       plantuml
       postgresql
       python3
-      taskwarrior3
       uv
       vim
       wget

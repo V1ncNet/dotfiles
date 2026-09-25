@@ -1,5 +1,9 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
+let
+  taskThemes = "${config.programs.taskwarrior.package}/share/doc/task/rc";
+  taskTheme = "${config.xdg.stateHome}/task/theme";
+in
 {
   imports = (import ../../modules/home-manager) ++ [ ./ghostty.nix ];
 
@@ -47,6 +51,12 @@
       };
     };
 
+    taskwarrior = {
+      enable = true;
+      package = pkgs.taskwarrior3;
+      extraConfig = "include ${taskTheme}";
+    };
+
     gpg = {
       enable = true;
       homedir = "${config.home.homeDirectory}/.gnupg";
@@ -71,6 +81,17 @@
         path+=$HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
       '';
 
+      initContent = ''
+        appearance() {
+          [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == Dark ]] && echo dark || echo light
+        }
+
+        task() {
+          ln -sfn "${taskThemes}/$(appearance)-16.theme" "${taskTheme}"
+          command task "$@"
+        }
+      '';
+
       shellAliases = {
       };
 
@@ -93,4 +114,9 @@
       };
     };
   };
+
+  home.activation.taskwarriorTheme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p "$(dirname "${taskTheme}")"
+    run ln -sfn "${taskThemes}/dark-16.theme" "${taskTheme}"
+  '';
 }
