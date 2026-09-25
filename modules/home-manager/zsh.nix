@@ -1,5 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
+let
+  secrets = "${config.xdg.configHome}/zsh/secrets.zsh";
+
+  secretsTemplate = pkgs.writeText "secrets.zsh" ''
+    # Local secrets, not tracked in the dotfiles repository
+    # export GH_TOKEN=...
+  '';
+in
 {
   home.packages = [ pkgs.zsh pkgs.oh-my-zsh ];
 
@@ -79,9 +87,25 @@
       '';
     };
 
+    # Source local secrets once per session, so that direnv overrides survive
+    # in nested shells
+    envExtra = ''
+      if [[ -z "''${__ZSH_SECRETS_SOURCED-}" && -r "${secrets}" ]]; then
+        export __ZSH_SECRETS_SOURCED=1
+        source "${secrets}"
+      fi
+    '';
+
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
   };
+
+  home.activation.zshSecrets = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [[ ! -e "${secrets}" ]]; then
+      run mkdir -p "$(dirname "${secrets}")"
+      run install -m 600 ${secretsTemplate} "${secrets}"
+    fi
+  '';
 
   programs.dircolors.enableZshIntegration = true;
   programs.direnv.enableZshIntegration = true;
