@@ -4,4 +4,5 @@
   ./git.nix
   ./vim.nix
   ./less.nix
+  ./fzf.nix
 ]
