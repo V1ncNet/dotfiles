@@ -28,6 +28,7 @@
       "minecraft"
       "musescore"
       "nextcloud"
+      "obsidian"
       "obs"
       "postman"
       "signal"

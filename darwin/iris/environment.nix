@@ -19,7 +19,6 @@
       jq
       mas
       maven
-      obsidian
       ollama
       pandoc
       pdftk
