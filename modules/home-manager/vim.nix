@@ -13,8 +13,8 @@
     };
 
     plugins = with pkgs.vimPlugins; [
-      dracula-vim
       fzf-vim
+      vim-dim
       vim-nix
       zoxide-vim
     ];
@@ -30,6 +30,11 @@
       endif
 
       syntax enable
+      colorscheme dim
+
+      " Re-query the terminal background when focus returns, so 'background'
+      " follows the light/dark appearance
+      autocmd FocusGained * if !empty(&t_RB) | call echoraw(&t_RB) | endif
     '';
   };
 }
