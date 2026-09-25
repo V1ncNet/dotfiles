@@ -4,6 +4,10 @@
 
     onActivation.upgrade = true;
 
+    taps = [
+      "msitarzewski/agency-agents"
+    ];
+
     brews = [
       "nvm"
     ];
@@ -12,9 +16,11 @@
       "adobe-acrobat-reader"
       "affinity"
       "audacity"
+      "balenaetcher"
       "blender"
       "deepl"
       "chatgpt"
+      "claude"
       "discord"
       "docker-desktop"
       "element"
@@ -25,16 +31,19 @@
       "keepassxc"
       "mactex-no-gui"
       "minecraft"
+      "msitarzewski/agency-agents/agency-agents"
       "musescore"
       "nextcloud"
       "obsidian"
       "obs"
       "ollama-app"
       "postman"
+      "raspberry-pi-imager"
       "signal"
       "spotify"
       "stats"
       "steam"
+      "sweet-home3d"
       "teamspeak-client"
       "telegram"
       "temurin@8"
@@ -43,10 +52,12 @@
       "temurin@21"
       "temurin@25"
       "temurin"
+      "thunderbird"
       "unity-hub"
       "viscosity"
       "visual-studio-code"
       "vlc"
+      "xca"
     ];
 
     masApps = {
