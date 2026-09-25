@@ -64,7 +64,6 @@
         "encode64"
         "extract"
         "git"
-        "iterm2"
         "python"
         "sudo"
       ];
@@ -76,7 +75,6 @@
         zstyle ':completion::complete:*' gain-privileges 1
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
         zstyle ':completion:*' menu no
-        zstyle ':omz:plugins:iterm2' shell-integration yes
       '';
     };
 
