@@ -27,8 +27,6 @@
       wget
       yq
     ];
-
-    darwinConfig = "$HOME/Code/vinado/dotfiles/darwin/iris/default.nix";
   };
 
   fonts.packages = with pkgs; [
