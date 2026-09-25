@@ -22,9 +22,7 @@
 
     casks = [
       "adobe-acrobat-reader"
-      "affinity-designer"
-      "affinity-photo"
-      "affinity-publisher"
+      "affinity"
       "audacity"
       "blender"
       "deepl"
