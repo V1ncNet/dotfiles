@@ -41,11 +41,10 @@ Switching on a Linux host itself (`home-manager switch --flake github:V1ncNet/do
 ## Conventions
 
 - Secrets live in the untracked `~/.config/zsh/secrets.zsh` (created from a template by a Home Manager activation script in `modules/home-manager/zsh.nix`); never put them in the repo.
-- `~/.claude/settings.json` is generated read-only from `darwin/iris/claude-code.nix`; change Claude Code settings there. Claude Code itself and Node versions (`fnm`) are installed outside Nix.
+- `~/.claude/settings.json` is a writable file owned by Claude Code. `darwin/iris/claude-code.nix` only holds defaults, which an activation script deep-merges into it on every switch; local values win, arrays are replaced rather than merged, and defaults removed from Nix stay in the file. Put Claude Code defaults there. Claude Code itself and Node versions (`fnm`) are installed outside Nix.
 - On iris, Nix paths take precedence over Homebrew in `PATH`.
 - Set global environment variables and paths with `home.sessionVariables` / `home.sessionPath`, which are applied once per session. Don't assign them in `programs.zsh.envExtra`: it runs in every shell and would undo per-project `direnv` overrides (e.g. `JAVA_HOME` from a `.envrc`) in nested shells.
 - Home Manager refuses to overwrite unmanaged files. Before switching or deploying a change that adds a managed file, check whether the target already exists on the host.
 - Nix doesn't repeat evaluation warnings for cached evaluations. When checking a build for warnings, make sure it was actually re-evaluated after the change.
 - Switching iris requires `sudo`; leave running the switch to Vincent.
-- Commit messages are short imperative sentences without prefixes (e.g. "Collect garbage weekly on Linux hosts").
 - Follow-up corrections to unpushed commits are made with `git commit --fixup`. Squash and push only when asked.

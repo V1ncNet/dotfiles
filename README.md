@@ -135,5 +135,5 @@ home-manager generations
 - Node follows `.nvmrc`, install missing versions with `fnm install`.
 - Terminal colors live in `themes/claude.nix`, all other tools use the ANSI
   slots.
-- `~/.claude/settings.json` is read-only, change it in
-  `darwin/iris/claude-code.nix`.
+- Claude Code defaults in `darwin/iris/claude-code.nix` are merged into
+  `~/.claude/settings.json` on switch, local changes win.
