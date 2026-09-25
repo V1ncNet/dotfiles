@@ -35,5 +35,10 @@
         inherit inputs nixpkgs home-manager;
       }
     );
+
+    apps.aarch64-darwin = import ./apps {
+      inherit self;
+      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+    };
   };
 }
