@@ -2,6 +2,8 @@
   homebrew = {
     enable = true;
 
+    onActivation.upgrade = true;
+
     taps = [
       "dotenvx/brew"
     ];
