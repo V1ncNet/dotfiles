@@ -54,6 +54,7 @@
       "temurin@11"
       "temurin@17"
       "temurin@21"
+      "temurin@25"
       "temurin"
       "unity-hub"
       "viscosity"
