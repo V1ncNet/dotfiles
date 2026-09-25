@@ -5,15 +5,7 @@
     onActivation.upgrade = true;
 
     brews = [
-      "cairo"
-      "giflib"
-      "hidapi"
-      "jpeg"
-      "libpng"
-      "librsvg"
       "nvm"
-      "pango"
-      "pkg-config"
     ];
 
     casks = [
