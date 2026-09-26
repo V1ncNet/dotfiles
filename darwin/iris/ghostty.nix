@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 
 let
   claude = import ../../themes/claude.nix;
@@ -15,10 +15,12 @@ in
 {
   programs.ghostty = {
     enable = true;
-    package = pkgs.ghostty-bin;
+
+    # The app is installed as a Homebrew cask, which shows up properly in
+    # Spotlight and keeps itself up to date
+    package = null;
 
     settings = {
-      auto-update = "off";
       clipboard-read = "allow";
       confirm-close-surface = false;
       copy-on-select = "clipboard";

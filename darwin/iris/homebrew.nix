@@ -21,6 +21,7 @@
       "docker-desktop"
       "element"
       "firefox"
+      "ghostty"
       "google-chrome"
       "jamulus"
       "jetbrains-toolbox"
