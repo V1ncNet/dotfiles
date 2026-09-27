@@ -1,0 +1,4 @@
+[
+  ./darwin.nix
+  ./ghostty.nix
+]

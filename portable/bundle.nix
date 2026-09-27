@@ -1,17 +1,19 @@
 { pkgs, config }:
 
 let
-  formulae = import ./brew.nix pkgs;
+  homebrew = import ./brew.nix pkgs;
 
   storePaths = builtins.listToAttrs (map
     (entry: {
       name = builtins.unsafeDiscardStringContext (builtins.baseNameOf entry.package.outPath);
       value = { commandPrefix = entry.commandPrefix or ""; };
     })
-    formulae);
+    homebrew.formulae);
 
-  brewfile = pkgs.writeText "Brewfile"
-    (pkgs.lib.concatMapStrings (entry: ''brew "${entry.formula}"'' + "\n") formulae);
+  brewfile = pkgs.writeText "Brewfile" (
+    pkgs.lib.concatMapStrings (entry: ''brew "${entry.formula}"'' + "\n") homebrew.formulae
+    + pkgs.lib.concatMapStrings (cask: ''cask "${cask}"'' + "\n") homebrew.casks
+  );
 in
 pkgs.runCommand "dotfiles-portable"
 {

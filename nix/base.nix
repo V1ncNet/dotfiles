@@ -18,11 +18,7 @@
 
   programs = {
     home-manager.enable = true;
-    dircolors.enable = true;
-    direnv.enable = true;
-    fzf.enable = true;
     command-not-found.enable = true;
-    zoxide.enable = true;
 
     zsh = {
       envExtra = ''

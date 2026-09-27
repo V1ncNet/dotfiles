@@ -130,8 +130,9 @@ home-manager generations
 ## Hosts without Nix
 
 For macOS machines that cannot or may not run Nix, GitHub Actions builds a
-portable export on every push to `main`. It contains the shared Home
-Manager modules (zsh, Git, starship, fzf, zoxide, direnv, less/bat, vim),
+portable export on every push to `main`. It contains the Home Manager
+modules shared by all hosts (zsh, Git, starship, fzf, zoxide, direnv,
+less/bat, vim) and those shared by all Macs (fnm, Ghostty configuration),
 but nothing specific to `iris`.
 
 ### Setup
@@ -146,16 +147,28 @@ curl -fsSL https://github.com/V1ncNet/dotfiles/releases/download/portable/portab
 brew bundle --file dotfiles-portable/Brewfile
 ```
 
+Try the export in a throwaway home directory first, which shows startup
+errors without touching the real one:
+
+```bash
+T=$(mktemp -d); HOME=$T dotfiles-portable/install.sh; HOME=$T zsh -il
+```
+
 ```bash
 dotfiles-portable/install.sh
 ```
 
-`install.sh` moves differing existing files to
-`~/.dotfiles-backup/<timestamp>/`. Repeat the same steps to update.
+`install.sh` refuses to run until the `Brewfile` is satisfied and moves
+differing existing files to `~/.dotfiles-backup/<timestamp>/`. To go back,
+copy the backup into the home directory. Repeat the same steps to update.
 
-Machine-specific Git settings such as a work email or signing key go into
-`~/.config/git/local`, secrets into `~/.config/zsh/secrets.zsh`.
-`install.sh` creates both files empty and never overwrites them.
+Machine-specific settings survive updates in these files, which
+`install.sh` creates empty and never overwrites:
+
+- `~/.config/zsh/local.zsh`: PATH entries, exports and tool setup, sourced
+  last. Take them from backed up zsh files, but not their oh-my-zsh setup.
+- `~/.config/git/local`: Git settings such as a work email or signing key.
+- `~/.config/zsh/secrets.zsh`: secrets.
 
 ### Build locally
 

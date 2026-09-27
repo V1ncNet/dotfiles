@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   home = {
     username = "vincent";
@@ -8,25 +10,20 @@
   };
 
   programs = {
-    dircolors.enable = true;
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = false;
-    };
-
-    fzf.enable = true;
-    zoxide.enable = true;
+    direnv.nix-direnv.enable = false;
 
     git.settings.include.path = "~/.config/git/local";
 
     zsh.package = null;
 
-    zsh.envExtra = ''
+    zsh.profileExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
 
-      typeset -U path PATH
-      path+=(~/.local/bin)
+    zsh.initContent = lib.mkAfter ''
+      if [[ -r ~/.config/zsh/local.zsh ]]; then
+        source ~/.config/zsh/local.zsh
+      fi
     '';
   };
 }
