@@ -14,6 +14,9 @@ let
       setlocal spell spelllang=de_de,en
       setlocal shiftwidth=2 tabstop=2 softtabstop=2
     '';
+    "after/ftplugin/gitrebase.vim" = pkgs.writeText "gitrebase.vim" ''
+      nnoremap <buffer> <CR> <Cmd>Cycle<CR>
+    '';
   };
 in
 {
