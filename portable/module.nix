@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   home = {
     username = "vincent";
@@ -16,6 +18,12 @@
 
     zsh.profileExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
+
+    zsh.initContent = lib.mkAfter ''
+      if [[ -r ~/.config/zsh/local.zsh ]]; then
+        source ~/.config/zsh/local.zsh
+      fi
     '';
   };
 }
