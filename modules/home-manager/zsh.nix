@@ -107,9 +107,25 @@ in
     fi
   '';
 
-  programs.dircolors.enableZshIntegration = true;
-  programs.direnv.enableZshIntegration = true;
-  programs.direnv.silent = true;
-  programs.fzf.enableZshIntegration = true;
-  programs.zoxide.enableZshIntegration = true;
+  programs.dircolors = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    silent = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [ "--cmd cd" ];
+  };
 }

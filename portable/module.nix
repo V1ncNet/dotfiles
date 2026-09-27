@@ -8,15 +8,7 @@
   };
 
   programs = {
-    dircolors.enable = true;
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = false;
-    };
-
-    fzf.enable = true;
-    zoxide.enable = true;
+    direnv.nix-direnv.enable = false;
 
     git.settings.include.path = "~/.config/git/local";
 
