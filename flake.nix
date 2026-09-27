@@ -40,5 +40,9 @@
       inherit self;
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
     };
+
+    packages.aarch64-darwin.portable = import ./portable {
+      inherit nixpkgs home-manager;
+    };
   };
 }
