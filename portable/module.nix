@@ -14,11 +14,8 @@
 
     zsh.package = null;
 
-    zsh.envExtra = ''
+    zsh.profileExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
-
-      typeset -U path PATH
-      path+=(~/.local/bin)
     '';
   };
 }

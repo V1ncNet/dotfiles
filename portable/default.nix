@@ -5,7 +5,9 @@ let
 
   home = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    modules = (import ../modules/home-manager) ++ [ ./module.nix ];
+    modules = (import ../modules/home-manager)
+      ++ (import ../modules/home-manager-darwin)
+      ++ [ ./module.nix ];
   };
 in
 import ./bundle.nix { inherit pkgs; inherit (home) config; }
