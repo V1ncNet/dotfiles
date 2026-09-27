@@ -127,6 +127,42 @@ home-manager generations
 /nix/store/<generation>/activate
 ```
 
+## Hosts without Nix
+
+For macOS machines that cannot or may not run Nix, GitHub Actions builds a
+portable export on every push to `main`. It contains the shared Home
+Manager modules (zsh, Git, starship, fzf, zoxide, direnv, less/bat, vim),
+but nothing specific to `iris`.
+
+### Setup
+
+Requires [Homebrew](https://brew.sh).
+
+```bash
+curl -fsSL https://github.com/V1ncNet/dotfiles/releases/download/portable/portable.tar.gz | tar -xz
+```
+
+```bash
+brew bundle --file dotfiles-portable/Brewfile
+```
+
+```bash
+dotfiles-portable/install.sh
+```
+
+`install.sh` moves differing existing files to
+`~/.dotfiles-backup/<timestamp>/`. Repeat the same steps to update.
+
+Machine-specific Git settings such as a work email or signing key go into
+`~/.config/git/local`, secrets into `~/.config/zsh/secrets.zsh`.
+`install.sh` creates both files empty and never overwrites them.
+
+### Build locally
+
+```bash
+nix build .#portable
+```
+
 ## Notes
 
 - Secrets go into `~/.config/zsh/secrets.zsh` as `export NAME=…`. The file
