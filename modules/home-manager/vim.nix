@@ -1,5 +1,24 @@
 { pkgs, ... }:
 
+let
+  personalVimFiles = pkgs.linkFarm "vim-personal" {
+    "spell/de.utf-8.spl" = pkgs.fetchurl {
+      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/de.utf-8.spl";
+      hash = "sha256-c8cQfqM5hWzb6SHeuSpFk5xN5uucByYdobndGfaDo9E=";
+    };
+    "spell/de.utf-8.sug" = pkgs.fetchurl {
+      url = "https://ftp.nluug.nl/pub/vim/runtime/spell/de.utf-8.sug";
+      hash = "sha256-E9Ds+Shj2J72DNSopesqWhOg6Pm6jRxqvkerqFcUqUg=";
+    };
+    "after/ftplugin/gitcommit.vim" = pkgs.writeText "gitcommit.vim" ''
+      setlocal spell spelllang=de_de,en
+      setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    '';
+    "after/ftplugin/gitrebase.vim" = pkgs.writeText "gitrebase.vim" ''
+      nnoremap <buffer> <CR> <Cmd>Cycle<CR>
+    '';
+  };
+in
 {
   # Home Manager Package vim currently fails to install
   # home.packages = [ pkgs.vim ];
@@ -17,6 +36,7 @@
       vim-dim
       vim-nix
       zoxide-vim
+      personalVimFiles
     ];
 
     extraConfig = ''
@@ -25,9 +45,8 @@
 
       filetype plugin indent on
 
-      if has('spell')
-        autocmd FileType gitcommit setlocal spell
-      endif
+      call mkdir(expand('~/.vim/spell'), 'p')
+      set spellfile=~/.vim/spell/personal.utf-8.add
 
       syntax enable
       colorscheme dim
