@@ -1,0 +1,29 @@
+name: Portable export
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portable
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+      - run: nix build .#portable
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view portable > /dev/null 2>&1 \
+            || gh release create portable --title "Portable export" \
+              --notes "Dotfiles for macOS hosts without Nix, rebuilt on every push to main."
+          gh release upload portable result/portable.tar.gz --clobber
