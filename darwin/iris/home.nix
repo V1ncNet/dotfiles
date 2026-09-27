@@ -5,10 +5,9 @@ let
   taskTheme = "${config.xdg.stateHome}/task/theme";
 in
 {
-  imports = (import ../../modules/home-manager) ++ [
-    ./claude-code.nix
-    ./ghostty.nix
-  ];
+  imports = (import ../../modules/home-manager)
+    ++ (import ../../modules/home-manager-darwin)
+    ++ [ ./claude-code.nix ];
 
   home = {
     username = "vincent";
@@ -17,7 +16,6 @@ in
 
     packages = with pkgs; [
       direnv
-      fnm
       fzf
       gnupg
       rustup
@@ -28,11 +26,6 @@ in
       default-cache-ttl 600
       max-cache-ttl 7200
     '';
-
-    sessionPath = [
-      "$HOME/.local/bin"
-      "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
-    ];
 
     sessionVariables = {
       DIAGRAM_DITAA_CLASSPATH = "${pkgs.ditaa}/lib/ditaa.jar";
@@ -65,11 +58,6 @@ in
       homedir = "${config.home.homeDirectory}/.gnupg";
     };
 
-    starship.settings.character = {
-      success_symbol = "[▶](bold green)";
-      error_symbol = "[▶](bold red)";
-    };
-
     zsh = {
       dotDir = "${config.home.homeDirectory}/.config/zsh";
 
@@ -80,8 +68,6 @@ in
       '';
 
       initContent = ''
-        eval "$(${lib.getExe pkgs.fnm} env --use-on-cd --version-file-strategy=recursive --shell zsh)"
-
         appearance() {
           [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == Dark ]] && echo dark || echo light
         }
