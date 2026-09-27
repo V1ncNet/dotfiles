@@ -2,7 +2,8 @@
 set -euo pipefail
 
 readonly placeholder="/__HOME__"
-readonly exported_home="$(cd "$(dirname "$0")" && pwd)/home"
+readonly export_root="$(cd "$(dirname "$0")" && pwd)"
+readonly exported_home="$export_root/home"
 readonly backup="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 readonly ghostty_app_config="$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 readonly staging="$(mktemp -d)"
@@ -40,6 +41,13 @@ create_if_missing() {
   fi
 }
 
+require_homebrew_packages() {
+  if ! HOMEBREW_NO_AUTO_UPDATE=1 brew bundle check --file "$export_root/Brewfile" > /dev/null; then
+    echo "Homebrew packages are missing, run: brew bundle --file $export_root/Brewfile" >&2
+    exit 1
+  fi
+}
+
 shell_files_backed_up() {
   local file
   for file in .zshrc .zshenv .zprofile; do
@@ -47,6 +55,8 @@ shell_files_backed_up() {
   done
   return 1
 }
+
+require_homebrew_packages
 
 while IFS= read -r -d '' file; do
   install_file "${file#"$exported_home"/}"
