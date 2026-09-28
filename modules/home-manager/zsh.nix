@@ -27,7 +27,7 @@ in
 
     shellAliases = {
       uuidgen = "uuidgen | tr \"[:upper:]\" \"[:lower:]\" | tr -d \\\\n";
-      kw = "date +%W";
+      kw = "date +%V";
     };
 
     plugins = [
