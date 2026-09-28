@@ -6,7 +6,7 @@ let
     runtimeInputs = [ pkgs.gnused pkgs.gawk ];
     text = ''
       # shellcheck disable=SC2016
-      sed -e '/^# -* >8 -*$/,$d' -e '/^#/d' "$1" | gawk '
+      sed -E -e '/^# -* >8 -*$/,$d' -e '/^#([[:space:]]|$)/d' "$1" | gawk '
       function reject(reason) { print "commit-msg: " reason > "/dev/stderr"; failed = 1 }
       { line[NR] = $0 }
       NR == 1 && /^(Merge|Revert|fixup!|squash!|amend!) / { generated = 1; exit }
@@ -43,7 +43,7 @@ in
         email = "vincent.nadoll@googlemail.com";
       };
 
-      aliases = {
+      alias = {
         resotre = "restore";
       };
 

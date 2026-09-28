@@ -12,9 +12,16 @@
   programs = {
     direnv.nix-direnv.enable = false;
 
-    git.settings.include.path = "~/.config/git/local";
+    git.includes = [ { path = "~/.config/git/local"; } ];
 
     zsh.package = null;
+
+    zsh.envExtra = lib.mkAfter ''
+      if [[ -z "''${__ZSH_LOCAL_ENV_SOURCED-}" && -r ~/.config/zsh/env.zsh ]]; then
+        export __ZSH_LOCAL_ENV_SOURCED=1
+        source ~/.config/zsh/env.zsh
+      fi
+    '';
 
     zsh.profileExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"

@@ -64,6 +64,7 @@ done < <(find "$exported_home" -type f -print0)
 
 create_if_missing "$HOME/.config/zsh/secrets.zsh" 600
 create_if_missing "$HOME/.config/git/local" 644
+create_if_missing "$HOME/.config/zsh/env.zsh" 644
 create_if_missing "$HOME/.config/zsh/local.zsh" 644
 
 if [[ -d "$backup" ]]; then
@@ -72,9 +73,10 @@ fi
 
 if shell_files_backed_up; then
   cat <<EOF
-Move machine-specific PATH entries, exports and tool setup from the zsh
-files in the backup into ~/.config/zsh/local.zsh. Leave out any
-oh-my-zsh setup, the export brings its own.
+Move machine-specific settings from the zsh files in the backup:
+PATH entries and exports into ~/.config/zsh/env.zsh, interactive setup
+such as aliases and completions into ~/.config/zsh/local.zsh. Leave out
+any oh-my-zsh setup, the export brings its own.
 EOF
 fi
 
