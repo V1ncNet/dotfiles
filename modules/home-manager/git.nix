@@ -43,7 +43,7 @@ in
         email = "vincent.nadoll@googlemail.com";
       };
 
-      aliases = {
+      alias = {
         resotre = "restore";
       };
 
