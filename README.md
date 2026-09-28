@@ -39,7 +39,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 ```bash
-fnm install --lts && fnm default lts-latest
+fnm install --latest && fnm default latest
 ```
 
 ### Commands
