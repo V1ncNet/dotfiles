@@ -165,8 +165,13 @@ copy the backup into the home directory. Repeat the same steps to update.
 Machine-specific settings survive updates in these files, which
 `install.sh` creates empty and never overwrites:
 
-- `~/.config/zsh/local.zsh`: PATH entries, exports and tool setup, sourced
-  last. Take them from backed up zsh files, but not their oh-my-zsh setup.
+- `~/.config/zsh/env.zsh`: PATH entries and exports, sourced once per
+  session so that scripts and other non-interactive shells see them too.
+  Nested shells skip the file, so `export` every variable.
+- `~/.config/zsh/local.zsh`: interactive setup such as aliases, key
+  bindings and completions, sourced last.
+
+Take these from backed up zsh files, but not their oh-my-zsh setup.
 - `~/.config/git/local`: Git settings such as a work email or signing key.
 - `~/.config/zsh/secrets.zsh`: secrets.
 
