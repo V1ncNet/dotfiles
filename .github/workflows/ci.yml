@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  darwin:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+      - run: nix build .#portable
+      - name: Evaluate iris
+        run: nix eval --raw .#darwinConfigurations.iris.system.drvPath
+
+  home:
+    strategy:
+      matrix:
+        include:
+          - host: bach
+            runner: ubuntu-24.04-arm
+          - host: ceres
+            runner: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+      - run: nix build '.#homeConfigurations."vincent@${{ matrix.host }}".activationPackage'
