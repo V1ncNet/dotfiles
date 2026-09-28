@@ -12,7 +12,7 @@
   programs = {
     direnv.nix-direnv.enable = false;
 
-    git.settings.include.path = "~/.config/git/local";
+    git.includes = [ { path = "~/.config/git/local"; } ];
 
     zsh.package = null;
 
