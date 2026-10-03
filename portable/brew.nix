@@ -10,6 +10,7 @@ pkgs:
     { package = pkgs.gawk; formula = "gawk"; }
     { package = pkgs.git; formula = "git"; }
     { package = pkgs.gnused; formula = "gnu-sed"; commandPrefix = "g"; }
+    { package = pkgs.less; formula = "less"; }
     { package = pkgs.lesspipe; formula = "lesspipe"; }
     { package = pkgs.mdcat; formula = "mdcat"; }
     { package = pkgs.starship; formula = "starship"; }
