@@ -25,10 +25,6 @@ in
       confirm-close-surface = false;
       copy-on-select = "clipboard";
       font-family = "Hack Nerd Font Mono";
-      # Turns text black or white below a WCAG contrast of 2, e.g. htop's
-      # black on green/cyan header and selection in the dark theme, while
-      # leaving moderately low-contrast colors untouched
-      minimum-contrast = 2;
       quit-after-last-window-closed = true;
       shell-integration-features = "no-cursor";
       theme = "light:Claude Light,dark:Claude Dark";
