@@ -7,7 +7,10 @@ in
 {
   imports = (import ../../modules/home-manager)
     ++ (import ../../modules/home-manager-darwin)
-    ++ [ ./claude-code.nix ];
+    ++ [
+      ../../modules/home-manager/worktree-init.nix
+      ./claude-code.nix
+    ];
 
   home = {
     username = "vincent";

@@ -76,6 +76,26 @@
         "type": "indirect"
       }
     },
+    "git-worktree-init": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792759112,
+        "narHash": "sha256-bJsEtjjZhyt9Bz8H79RdgcmVgRDZ3WnIrMtC3BGT5Oo=",
+        "owner": "V1ncNet",
+        "repo": "git-worktree-init",
+        "rev": "85a3e538c9654c53e7c17b328fb36d844397f63c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "V1ncNet",
+        "repo": "git-worktree-init",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -222,6 +242,7 @@
     },
     "root": {
       "inputs": {
+        "git-worktree-init": "git-worktree-init",
         "home-manager": "home-manager",
         "mac-app-util": "mac-app-util",
         "nix-darwin": "nix-darwin",

@@ -1,7 +1,8 @@
 { pkgs, config, ... }:
 
 {
-  imports = (import ../modules/home-manager);
+  imports = (import ../modules/home-manager)
+    ++ [ ../modules/home-manager/worktree-init.nix ];
 
   home = {
     packages = with pkgs; [

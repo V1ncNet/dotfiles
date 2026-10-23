@@ -18,9 +18,14 @@
       url = "github:hraban/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    git-worktree-init = {
+      url = "github:V1ncNet/git-worktree-init";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, mac-app-util }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, mac-app-util, ... }:
   {
     darwinConfigurations = (
       import ./darwin {
