@@ -19,6 +19,10 @@
     zsh.package = null;
 
     zsh.envExtra = lib.mkAfter ''
+      if [[ -z "''${HOMEBREW_PREFIX-}" && -x /opt/homebrew/bin/brew ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+
       if [[ -z "''${__ZSH_LOCAL_ENV_SOURCED-}" && -r ~/.config/zsh/env.zsh ]]; then
         export __ZSH_LOCAL_ENV_SOURCED=1
         source ~/.config/zsh/env.zsh
