@@ -26,4 +26,4 @@ jobs:
           gh release view portable > /dev/null 2>&1 \
             || gh release create portable --title "Portable export" \
               --notes "Dotfiles for macOS hosts without Nix, rebuilt on every push to main."
-          gh release upload portable result/portable.tar.gz --clobber
+          gh release upload portable result/portable.tar.gz portable/setup.sh --clobber

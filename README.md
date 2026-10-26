@@ -140,27 +140,24 @@ but nothing specific to `iris`.
 Requires [Homebrew](https://brew.sh).
 
 ```bash
-curl -fsSL https://github.com/V1ncNet/dotfiles/releases/download/portable/portable.tar.gz | tar -xz
+curl -fsSL https://github.com/V1ncNet/dotfiles/releases/download/portable/setup.sh | bash
 ```
 
-```bash
-brew bundle --file dotfiles-portable/Brewfile
-```
+Without curl, `wget -qO-` works the same way. The script downloads the
+export, installs its `Brewfile` and runs `install.sh`.
 
 Try the export in a throwaway home directory first, which shows startup
-errors without touching the real one:
+errors without touching the real one. The `Brewfile` still gets
+installed system-wide, and Homebrew downloads bottles again because its
+cache lives in the home directory:
 
 ```bash
-T=$(mktemp -d); HOME=$T dotfiles-portable/install.sh; HOME=$T zsh -il
+T=$(mktemp -d); curl -fsSL https://github.com/V1ncNet/dotfiles/releases/download/portable/setup.sh | HOME=$T bash; HOME=$T zsh -il
 ```
 
-```bash
-dotfiles-portable/install.sh
-```
-
-`install.sh` refuses to run until the `Brewfile` is satisfied and moves
-differing existing files to `~/.dotfiles-backup/<timestamp>/`. To go back,
-copy the backup into the home directory. Repeat the same steps to update.
+`install.sh` moves differing existing files to
+`~/.dotfiles-backup/<timestamp>/`. To go back, copy the backup into the
+home directory. Run the same command again to update.
 
 Machine-specific settings survive updates in these files, which
 `install.sh` creates empty and never overwrites:
