@@ -21,14 +21,18 @@ load_homebrew() {
   return 1
 }
 
+require_downloader() {
+  if ! command -v curl > /dev/null && ! command -v wget > /dev/null; then
+    echo "Downloading the export requires curl or wget" >&2
+    return 1
+  fi
+}
+
 download() {
   if command -v curl > /dev/null; then
     curl -fsSL "$1"
-  elif command -v wget > /dev/null; then
-    wget -qO- "$1"
   else
-    echo "Downloading the export requires curl or wget" >&2
-    return 1
+    wget -qO- "$1"
   fi
 }
 
@@ -36,6 +40,7 @@ main() {
   local url="${DOTFILES_PORTABLE_URL:-$release_url}"
   require_macos
   load_homebrew
+  require_downloader
 
   download_dir="$(mktemp -d)"
   trap 'rm -rf "$download_dir"' EXIT
