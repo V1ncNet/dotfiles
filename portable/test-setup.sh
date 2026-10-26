@@ -73,6 +73,12 @@ assert_file_lacks() {
   ! grep -qF -- "$2" "$1" 2> /dev/null || fail "expected $1 not to contain '$2'"
 }
 
+assert_line_count() {
+  local count
+  count=$(($(wc -l < "$1")))
+  ((count == $2)) || fail "expected $2 line(s) in $1, got $count: $(cat "$1")"
+}
+
 assert_missing() {
   [[ ! -e "$1" ]] || fail "expected $1 not to exist"
 }
@@ -169,6 +175,7 @@ test_fails_without_downloader() {
   run_setup
   assert_status 1
   assert_file_contains "$sandbox/stderr" "curl or wget"
+  assert_line_count "$sandbox/stderr" 1
   assert_missing "$sandbox/home/installed"
 }
 
