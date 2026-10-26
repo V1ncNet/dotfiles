@@ -58,7 +58,7 @@ run_setup() {
 
 fail() {
   echo "  $1" >&2
-  failures=$((failures + 1))
+  exit 1
 }
 
 assert_status() {
@@ -148,7 +148,18 @@ test_fails_when_download_fails() {
   stub_brew
   stub curl 'exit 22'
   run_setup
-  assert_status 22
+  assert_status 1
+  assert_file_contains "$sandbox/stderr" "https://example.invalid/portable.tar.gz"
+  assert_missing "$sandbox/home/installed"
+  assert_empty_directory "$sandbox/tmp"
+}
+
+test_reports_failed_wget_download() {
+  stub_brew
+  stub wget 'exit 8'
+  run_setup
+  assert_status 1
+  assert_file_contains "$sandbox/stderr" "https://example.invalid/portable.tar.gz"
   assert_missing "$sandbox/home/installed"
   assert_empty_directory "$sandbox/tmp"
 }
@@ -161,14 +172,28 @@ test_fails_without_downloader() {
   assert_missing "$sandbox/home/installed"
 }
 
+run_test() {
+  set +e
+  (
+    set -e
+    "$1"
+  )
+  local result=$?
+  set -e
+  if ((result != 0)); then
+    echo "  FAILED with exit status $result" >&2
+    failures=$((failures + 1))
+  fi
+}
+
 for test in $(declare -F | awk '{ print $3 }' | grep '^test_'); do
   echo "$test"
   new_sandbox
-  "$test"
+  run_test "$test"
   rm -rf "$sandbox"
 done
 
 if ((failures > 0)); then
-  echo "$failures assertion(s) failed" >&2
+  echo "$failures test(s) failed" >&2
   exit 1
 fi
