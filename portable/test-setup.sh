@@ -148,7 +148,18 @@ test_fails_when_download_fails() {
   stub_brew
   stub curl 'exit 22'
   run_setup
-  assert_status 22
+  assert_status 1
+  assert_file_contains "$sandbox/stderr" "https://example.invalid/portable.tar.gz"
+  assert_missing "$sandbox/home/installed"
+  assert_empty_directory "$sandbox/tmp"
+}
+
+test_reports_failed_wget_download() {
+  stub_brew
+  stub wget 'exit 8'
+  run_setup
+  assert_status 1
+  assert_file_contains "$sandbox/stderr" "https://example.invalid/portable.tar.gz"
   assert_missing "$sandbox/home/installed"
   assert_empty_directory "$sandbox/tmp"
 }

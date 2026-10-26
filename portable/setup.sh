@@ -40,7 +40,10 @@ main() {
   download_dir="$(mktemp -d)"
   trap 'rm -rf "$download_dir"' EXIT
 
-  download "$url" > "$download_dir/portable.tar.gz"
+  if ! download "$url" > "$download_dir/portable.tar.gz"; then
+    echo "Downloading the export from $url failed" >&2
+    return 1
+  fi
   tar -xzf "$download_dir/portable.tar.gz" -C "$download_dir"
   brew bundle --file "$download_dir/dotfiles-portable/Brewfile"
   "$download_dir/dotfiles-portable/install.sh"
