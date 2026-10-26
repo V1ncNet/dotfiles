@@ -30,7 +30,10 @@
     '';
 
     zsh.profileExtra = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)"
+      if [[ -n "''${HOMEBREW_PREFIX-}" ]]; then
+        typeset -U path
+        path=("$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin" $path)
+      fi
     '';
 
     zsh.initContent = lib.mkMerge [

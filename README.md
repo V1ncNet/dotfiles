@@ -164,9 +164,12 @@ Machine-specific settings survive updates in these files, which
 
 - `~/.config/zsh/env.zsh`: PATH entries and exports, sourced once per
   session so that scripts and other non-interactive shells see them too.
-  Nested shells skip the file, so `export` every variable.
+  Nested shells skip the file, so `export` every variable. Append PATH
+  entries with `path+=`, because login shells move the system
+  directories ahead of anything prepended here.
 - `~/.config/zsh/local.zsh`: interactive setup such as aliases, key
-  bindings and completions, sourced last.
+  bindings and completions, sourced last. PATH entries that have to
+  come before the system directories also go here.
 
 Take these from backed up zsh files, but not their oh-my-zsh setup.
 - `~/.config/git/local`: Git settings such as a work email or signing key.
