@@ -12,6 +12,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
+      - run: portable/test-setup.sh
       - uses: cachix/install-nix-action@v31
       - run: nix build .#portable
       - name: Evaluate iris
