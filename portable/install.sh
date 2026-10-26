@@ -75,8 +75,9 @@ if shell_files_backed_up; then
   cat <<EOF
 Move machine-specific settings from the zsh files in the backup:
 PATH entries and exports into ~/.config/zsh/env.zsh, interactive setup
-such as aliases and completions into ~/.config/zsh/local.zsh. Leave out
-any oh-my-zsh setup, the export brings its own.
+such as aliases and completions into ~/.config/zsh/local.zsh. PATH
+entries that have to come before the system directories also go into
+local.zsh. Leave out any oh-my-zsh setup, the export brings its own.
 EOF
 fi
 
