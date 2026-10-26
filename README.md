@@ -3,11 +3,10 @@
 Nix flake for my machines: nix-darwin and Home Manager on `iris` (macOS),
 standalone Home Manager on the Linux hosts.
 
-| Host    | System         | Configuration                        |
-|---------|----------------|--------------------------------------|
-| `iris`  | aarch64-darwin | `darwinConfigurations.iris`          |
-| `bach`  | aarch64-linux  | `homeConfigurations."vincent@bach"`  |
-| `ceres` | x86_64-linux   | `homeConfigurations."vincent@ceres"` |
+| Host   | System         | Configuration                       |
+|--------|----------------|-------------------------------------|
+| `iris` | aarch64-darwin | `darwinConfigurations.iris`         |
+| `bach` | aarch64-linux  | `homeConfigurations."vincent@bach"` |
 
 ## Requirements
 
@@ -92,8 +91,6 @@ Build locally, copy the closure and activate it, from within the repository:
 ```bash
 nix run .#deploy -- bach
 ```
-
-`ceres` is built with x86_64 emulation, which is slower.
 
 Free disk space by deleting all old generations, which rules out a rollback:
 

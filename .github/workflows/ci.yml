@@ -24,8 +24,6 @@ jobs:
         include:
           - host: bach
             runner: ubuntu-24.04-arm
-          - host: ceres
-            runner: ubuntu-latest
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
