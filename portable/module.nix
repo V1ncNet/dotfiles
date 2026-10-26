@@ -12,6 +12,8 @@
   programs = {
     direnv.nix-direnv.enable = false;
 
+    fzf.enableZshIntegration = lib.mkForce false;
+
     git.includes = [ { path = "~/.config/git/local"; } ];
 
     zsh.package = null;
@@ -27,10 +29,17 @@
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
 
-    zsh.initContent = lib.mkAfter ''
-      if [[ -r ~/.config/zsh/local.zsh ]]; then
-        source ~/.config/zsh/local.zsh
-      fi
-    '';
+    zsh.initContent = lib.mkMerge [
+      (lib.mkOrder 910 ''
+        if [[ $options[zle] = on ]]; then
+          source <(fzf --zsh)
+        fi
+      '')
+      (lib.mkAfter ''
+        if [[ -r ~/.config/zsh/local.zsh ]]; then
+          source ~/.config/zsh/local.zsh
+        fi
+      '')
+    ];
   };
 }
