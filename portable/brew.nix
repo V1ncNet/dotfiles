@@ -19,6 +19,7 @@ pkgs:
   ];
 
   casks = [
+    "corelocationcli"
     "font-hack-nerd-font"
   ];
 }
