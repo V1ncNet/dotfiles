@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: portable/test-setup.sh
+      - run: portable/test-install.sh
+      - run: osascript -l JavaScript modules/home-manager-darwin/appearance/test.js
       - uses: cachix/install-nix-action@v31
       - run: nix build .#portable
       - name: Evaluate iris

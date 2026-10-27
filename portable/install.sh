@@ -56,11 +56,25 @@ shell_files_backed_up() {
   return 1
 }
 
+load_launch_agents() {
+  local domain="gui/$(id -u)" plist label
+  for plist in "$exported_home"/Library/LaunchAgents/*.plist; do
+    [[ -e "$plist" ]] || continue
+    label="$(basename "$plist" .plist)"
+    launchctl bootout "$domain/$label" 2> /dev/null && sleep 1
+    if ! launchctl bootstrap "$domain" "$HOME/Library/LaunchAgents/$label.plist"; then
+      echo "Could not load launch agent $label, run: launchctl bootstrap $domain ~/Library/LaunchAgents/$label.plist" >&2
+    fi
+  done
+}
+
 require_homebrew_packages
 
 while IFS= read -r -d '' file; do
   install_file "${file#"$exported_home"/}"
 done < <(find "$exported_home" -type f -print0)
+
+load_launch_agents
 
 create_if_missing "$HOME/.config/zsh/secrets.zsh" 600
 create_if_missing "$HOME/.config/git/local" 644
@@ -83,6 +97,14 @@ fi
 
 if [[ -e "$HOME/.gitconfig" ]]; then
   echo "Git also reads ~/.gitconfig, whose settings override ~/.config/git/config"
+fi
+
+if [[ -e "$exported_home/Library/LaunchAgents/org.nix-community.home.appearance.plist" ]]; then
+  cat <<EOF
+The appearance switch needs CoreLocationCLI to be allowed in System
+Settings > Privacy & Security > Location Services. Turn it on there if
+macOS did not ask or the switch was off after asking.
+EOF
 fi
 
 if [[ -e "$ghostty_app_config" ]]; then

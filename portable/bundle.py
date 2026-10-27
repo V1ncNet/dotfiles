@@ -122,6 +122,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--home-files", type=Path, required=True)
     parser.add_argument("--vim", type=Path, required=True)
+    parser.add_argument("--launch-agents", type=Path, required=True)
     parser.add_argument("--store-paths", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     return parser.parse_args()
@@ -132,6 +133,7 @@ def main():
     bundle = Bundle(arguments.output, json.loads(arguments.store_paths.read_text()))
     bundle.add(arguments.home_files, arguments.output)
     bundle.add(find_vimrc(arguments.vim), arguments.output / ".vimrc")
+    bundle.add(arguments.launch_agents, arguments.output / "Library/LaunchAgents")
     bundle.assert_self_contained()
 
 

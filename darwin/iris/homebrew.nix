@@ -17,6 +17,7 @@
       "deepl"
       "chatgpt"
       "claude"
+      "corelocationcli"
       "discord"
       "docker-desktop"
       "element"

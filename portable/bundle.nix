@@ -27,6 +27,7 @@ pkgs.runCommand "dotfiles-portable"
     python3 ${./bundle.py} \
       --home-files ${config.home-files} \
       --vim ${pkgs.lib.getExe' config.programs.vim.package "vim"} \
+      --launch-agents ${config.home.activationPackage}/LaunchAgents \
       --store-paths "$storePathsPath" \
       --output "$root/home"
     cp ${brewfile} "$root/Brewfile"
