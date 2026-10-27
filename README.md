@@ -129,8 +129,9 @@ home-manager generations
 For macOS machines that cannot or may not run Nix, GitHub Actions builds a
 portable export on every push to `main`. It contains the Home Manager
 modules shared by all hosts (zsh, Git, starship, fzf, zoxide, direnv,
-less/bat, vim) and those shared by all Macs (fnm, Ghostty configuration),
-but nothing specific to `iris`.
+less/bat, vim) and those shared by all Macs (fnm, Ghostty configuration,
+appearance switching at sunrise and sunset), but nothing specific to
+`iris`.
 
 ### Setup
 
@@ -155,6 +156,13 @@ T=$(mktemp -d); curl -fsSL https://github.com/V1ncNet/dotfiles/releases/download
 `install.sh` moves differing existing files to
 `~/.dotfiles-backup/<timestamp>/`. To go back, copy the backup into the
 home directory. Run the same command again to update.
+
+`install.sh` also loads the export's launch agents. The appearance
+switch reads the location through CoreLocationCLI, which has to be
+allowed under System Settings > Privacy & Security > Location Services.
+macOS asks on the first run, but the switch may still be off afterwards.
+On that first run macOS also asks whether `osascript` may control System
+Events.
 
 Machine-specific settings survive updates in these files, which
 `install.sh` creates empty and never overwrites:
