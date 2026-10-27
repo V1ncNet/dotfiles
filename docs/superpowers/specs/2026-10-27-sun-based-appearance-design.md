@@ -76,6 +76,11 @@ prompts.
   CoreLocationCLI fails or times out, the cached location is used. Until
   the first location arrives, every run tries again, so granting the
   Location Services prompt takes effect within a minute.
+- **Rounded location:** coordinates are rounded to one decimal place
+  (about 10 km) right after the lookup, so no precise position is ever
+  stored. The effect on sun times stays below one minute. Any process of
+  the user can still query CoreLocationCLI directly once it has the
+  Location Services permission. That risk is accepted.
 - **State:** last known location and the timestamp of the last sun event
   acted upon live under `~/.local/state/appearance/` (respect
   `XDG_STATE_HOME` if set). Plain text or JSON, the builder decides.
