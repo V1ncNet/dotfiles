@@ -10,6 +10,7 @@ in
     ++ [
       ../../modules/home-manager/worktree-init.nix
       ./claude-code.nix
+      ./t3-code.nix
     ];
 
   home = {
