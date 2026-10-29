@@ -42,6 +42,7 @@
       "stats"
       "steam"
       "sweet-home3d"
+      "t3-code"
       "tailscale-app"
       "teamspeak-client"
       "telegram"
