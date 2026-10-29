@@ -13,6 +13,10 @@
 
   system.primaryUser = "vincent";
 
+  system.activationScripts.postActivation.text = ''
+    pmset -c sleep 0
+  '';
+
   system.defaults = {
     LaunchServices.LSQuarantine = false;
 
