@@ -42,6 +42,7 @@
       "stats"
       "steam"
       "sweet-home3d"
+      "tailscale-app"
       "teamspeak-client"
       "telegram"
       "temurin@8"
