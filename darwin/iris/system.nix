@@ -4,6 +4,11 @@
   networking = {
     computerName = "Iris";
     hostName = "iris";
+
+    applicationFirewall = {
+      enable = true;
+      enableStealthMode = true;
+    };
   };
 
   system.primaryUser = "vincent";
