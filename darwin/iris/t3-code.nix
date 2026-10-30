@@ -30,7 +30,6 @@ let
     text = text;
     textMuted = muted;
     border = subtle;
-    input = subtle;
     focus = accent;
     accent = accent;
     secondary = subtle;
@@ -50,9 +49,6 @@ let
     accentSurfaceForeground = text;
     messageSurface = subtle;
     messageForeground = text;
-    messageAction = subtle;
-    messageActionForeground = text;
-    messageActionHover = subtle;
     codeBackground = subtle;
     codeForeground = text;
     searchMatchBackground = slot 3;
@@ -88,14 +84,23 @@ let
     dark = { error = slot 9; warning = slot 11; update = slot 12; };
   };
 
+  # Switches and primary buttons need more contrast than the subtle surface
+  # offers. The off state of a switch and the hover tone are not in the palette
+  controls = {
+    light = { input = "#bdbab0"; messageActionHover = "#c6613f"; };
+    dark = { input = "#4d4c49"; messageActionHover = "#e58a6c"; };
+  };
+
   colorsOf = variant:
     lib.mapAttrs (_: pick: pick claude.${variant}) (colorMap // {
       accentForeground = onAccent.${variant};
+      messageAction = accent;
+      messageActionForeground = onAccent.${variant};
       searchMatchActiveForeground = onAccent.${variant};
       errorForeground = statusForeground.${variant}.error;
       warningForeground = statusForeground.${variant}.warning;
       updateForeground = statusForeground.${variant}.update;
-    });
+    } // lib.mapAttrs (_: color: _theme: color) controls.${variant});
 
   theme = {
     version = 1;
