@@ -57,6 +57,7 @@
       "viscosity"
       "visual-studio-code"
       "vlc"
+      "wispr-flow"
       "xca"
     ];
 
