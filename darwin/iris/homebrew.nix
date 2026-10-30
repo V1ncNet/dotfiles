@@ -24,6 +24,7 @@
       "firefox"
       "ghostty"
       "google-chrome"
+      "handy"
       "jamulus"
       "jetbrains-toolbox"
       "keepassxc"
@@ -57,7 +58,6 @@
       "viscosity"
       "visual-studio-code"
       "vlc"
-      "wispr-flow"
       "xca"
     ];
 
