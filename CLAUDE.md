@@ -52,5 +52,5 @@ Switching on a Linux host itself (`home-manager switch --flake github:V1ncNet/do
 - Launch agents in `modules/home-manager-darwin` need `waitForNixStore = false`, otherwise Home Manager wraps them in `wait4path /nix/store` and they never start on portable hosts.
 - Home Manager refuses to overwrite unmanaged files. Before switching or deploying a change that adds a managed file, check whether the target already exists on the host.
 - Nix doesn't repeat evaluation warnings for cached evaluations. When checking a build for warnings, make sure it was actually re-evaluated after the change.
-- Switching iris requires `sudo`; leave running the switch to Vincent.
+- Switching iris requires `sudo`, which shows a native macOS dialog instead of a password prompt, so Claude Code can run the switch itself.
 - Follow-up corrections to unpushed commits are made with `git commit --fixup`. Squash and push only when asked.
