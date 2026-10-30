@@ -17,6 +17,7 @@
       hcloud
       imagemagick
       jq
+      kubelogin-oidc
       mas
       maven
       pandoc
