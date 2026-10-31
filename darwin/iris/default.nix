@@ -32,6 +32,7 @@
       enable = true;
       ephemeral = true;
       systems = [ "aarch64-linux" ];
+      supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
     };
 
     optimise = {
