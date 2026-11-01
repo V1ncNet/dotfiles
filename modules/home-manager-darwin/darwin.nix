@@ -16,7 +16,7 @@
       error_symbol = "[▶](bold red)";
     };
 
-    zsh.initContent = ''
+    zsh.initContent = lib.mkOrder 550 ''
       eval "$(${lib.getExe pkgs.fnm} env --use-on-cd --version-file-strategy=recursive --shell zsh)"
     '';
   };
