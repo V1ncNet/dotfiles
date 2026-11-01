@@ -32,7 +32,7 @@
       enable = true;
       ephemeral = true;
       systems = [ "aarch64-linux" ];
-      supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
+      supportedFeatures = [ "benchmark" "big-parallel" "nixos-test" ];
       maxJobs = 4;
       config.virtualisation = {
         cores = 6;
