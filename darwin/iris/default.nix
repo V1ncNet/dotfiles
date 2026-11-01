@@ -33,6 +33,14 @@
       ephemeral = true;
       systems = [ "aarch64-linux" ];
       supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
+      maxJobs = 4;
+      config.virtualisation = {
+        cores = 6;
+        darwin-builder = {
+          memorySize = 12 * 1024;
+          diskSize = 60 * 1024;
+        };
+      };
     };
 
     optimise = {
