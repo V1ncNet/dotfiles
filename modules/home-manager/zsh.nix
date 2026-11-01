@@ -23,6 +23,7 @@ in
       HIST_STAMPS = "yyyy-mm-dd";
       PYTHON_AUTO_VRUN = true;
       PYTHON_VENV_NAME = ".venv";
+      VIRTUAL_ENV_DISABLE_PROMPT = 1;
     };
 
     shellAliases = {
