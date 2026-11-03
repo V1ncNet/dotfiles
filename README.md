@@ -67,6 +67,33 @@ Roll back to the previous generation:
 sudo darwin-rebuild --rollback
 ```
 
+### GitHub Actions runner
+
+`darwin/iris/github-runner.nix` runs the self-hosted runner `ops-flake` for
+`V1ncNet/ops` as the user `_github-runner`. A job-started hook refuses every
+job except the workflow `flake.yml` on `main`, triggered by
+`pull_request_target`.
+
+The runner registers once with a registration token, which expires after an
+hour. Changing `url`, `workDir` or the labels needs a new registration:
+
+Run from the repository root:
+
+```bash
+cfg=.#darwinConfigurations.iris.config
+state=$(nix eval --raw $cfg.launchd.daemons.github-runner-ops-flake.environment.RUNNER_ROOT)
+token=$(nix eval --raw $cfg.services.github-runners.ops-flake.tokenFile)
+sudo launchctl bootout system/org.nixos.github-runner-ops-flake
+sudo find "$state" -mindepth 1 -delete
+sudo install -o _github-runner -g _github-runner -m 0600 /dev/null "$token"
+gh api -X POST repos/V1ncNet/ops/actions/runners/registration-token \
+  --jq .token | sudo tee "$token" >/dev/null
+sudo darwin-rebuild switch --flake .#iris
+```
+
+On a fresh machine, the user does not exist before the first switch, so
+create the token file with owner and group `533` instead.
+
 ## Other hosts
 
 ### Setup
