@@ -7,6 +7,7 @@
     ./system.nix
     ./environment.nix
     ./homebrew.nix
+    ./github-runner.nix
   ];
 
   users.users.vincent = {
