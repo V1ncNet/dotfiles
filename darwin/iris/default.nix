@@ -40,6 +40,8 @@
         darwin-builder = {
           memorySize = 12 * 1024;
           diskSize = 60 * 1024;
+          min-free = 10 * 1024 * 1024 * 1024;
+          max-free = 30 * 1024 * 1024 * 1024;
         };
       };
     };
