@@ -16,4 +16,11 @@
       ./bach.nix
     ];
   };
+
+  "agent@juno" = home-manager.lib.homeManagerConfiguration {
+    pkgs = nixpkgs.legacyPackages.aarch64-linux;
+    extraSpecialArgs = { inherit inputs; };
+
+    modules = [ ./juno ];
+  };
 }

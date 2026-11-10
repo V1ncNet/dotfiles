@@ -7,6 +7,7 @@ standalone Home Manager on the Linux hosts.
 |--------|----------------|-------------------------------------|
 | `iris` | aarch64-darwin | `darwinConfigurations.iris`         |
 | `bach` | aarch64-linux  | `homeConfigurations."vincent@bach"` |
+| `juno` | aarch64-linux  | `homeConfigurations."agent@juno"`   |
 
 ## Requirements
 
@@ -150,6 +151,62 @@ home-manager generations
 ```bash
 /nix/store/<generation>/activate
 ```
+
+## juno
+
+`juno` runs NixOS, which owns services, packages, `known_hosts`, the SSH
+client configuration and everything outside `/home/agent`.
+`homeConfigurations."agent@juno"` manages only files in `/home/agent` as the
+user `agent`, no packages and no services. An assertion fails the build
+otherwise. It provides:
+
+- `~/.claude/CLAUDE.md`, `~/.claude/superpowers.md` and `~/.agents/AGENTS.md`,
+  linked from the private flake input `agent-rules`
+- the Claude Code hook and status line, and Claude Code defaults merged
+  into `~/.claude/settings.json` (plugins, marketplaces, model settings)
+- `~/.config/git/config` with SSH commit signing through
+  `~/.ssh/id_ed25519.pub` and `~/.ssh/allowed_signers`, `gh` as credential
+  helper and `https://github.com/` instead of `git@github.com:`
+
+The access key for the model proxy is not part of it. It lives in
+`~/.t3/service.env` together with `ANTHROPIC_BASE_URL`, because the Nix
+store is world-readable. For the same reason, the rules from `agent-rules`
+are readable by every user on the host.
+
+`agent-rules` is fetched over SSH. Once the configuration is active, git
+rewrites `git@github.com:` and `ssh://git@github.com/` to HTTPS and uses
+the `gh` credential helper. Whoever builds the configuration needs read
+access to that repository, and `nix flake update agent-rules` picks up new
+rules.
+
+The hook, the status line and the Git credential helper call `jq` and `gh`
+from `PATH`, so NixOS has to provide both.
+
+Home Manager refuses to overwrite unmanaged files, so move existing ones
+away before the first switch, namely `~/.ssh/allowed_signers`,
+`~/.config/git/config`, `~/.config/git/ignore`, `~/.agents/AGENTS.md` and
+the managed files in `~/.claude`. During `gh auth login`, answer the prompt
+to authenticate Git with no, because the Git configuration is read-only.
+
+Run `gh auth login` before the first switch. The Git rewrite does not exist
+yet then, so pass it once through the environment, as `agent`:
+
+```bash
+GIT_CONFIG_COUNT=2 \
+GIT_CONFIG_KEY_0=url.https://github.com/.insteadOf \
+GIT_CONFIG_VALUE_0=ssh://git@github.com/ \
+GIT_CONFIG_KEY_1=credential.https://github.com.helper \
+GIT_CONFIG_VALUE_1='!gh auth git-credential' \
+nix run home-manager -- switch --flake github:V1ncNet/dotfiles#agent@juno
+```
+
+Later switches need no variables:
+
+```bash
+home-manager switch --refresh --flake github:V1ncNet/dotfiles#agent@juno
+```
+
+The `deploy` and `gc` apps only cover `vincent@<host>`.
 
 ## Hosts without Nix
 
