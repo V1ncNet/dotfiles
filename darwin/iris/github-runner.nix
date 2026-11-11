@@ -6,6 +6,8 @@ let
   expectedWorkflowRef = "${repository}/.github/workflows/flake.yml@refs/heads/main";
   piCache = "https://nixos-raspberrypi.cachix.org";
 
+  runnerLabel = config.launchd.daemons."github-runner-${name}".serviceConfig.Label;
+
   rejectForeignJobs = pkgs.writeShellScript "${name}-job-started.sh" ''
     reject() { echo "Runner ${name} only takes the flake workflow of ${repository}, refusing: $1" >&2; exit 1; }
     [ "$GITHUB_EVENT_NAME" = pull_request_target ] || reject "event $GITHUB_EVENT_NAME"
@@ -25,6 +27,18 @@ in
     group = null;
     extraPackages = [ pkgs.gh ];
     extraEnvironment.ACTIONS_RUNNER_HOOK_JOB_STARTED = "${rejectForeignJobs}";
+  };
+
+  launchd.daemons."github-runner-${name}-power" = {
+    command = "${./github-runner-power.sh}";
+    environment = {
+      PATH = "/usr/bin:/bin:/usr/sbin:/sbin";
+      RUNNER_LABEL = runnerLabel;
+    };
+    serviceConfig = {
+      RunAtLoad = true;
+      LaunchEvents."com.apple.notifyd.matching".power.Notification = "com.apple.system.powersources.source";
+    };
   };
 
   nix.settings = {
