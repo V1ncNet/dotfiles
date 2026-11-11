@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agent-rules = {
+      url = "git+ssh://git@github.com/V1ncNet/agent-rules.git";
+      flake = false;
+    };
+
     git-worktree-init = {
       url = "github:V1ncNet/git-worktree-init";
       inputs.nixpkgs.follows = "nixpkgs";

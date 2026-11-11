@@ -32,8 +32,6 @@ let
   };
 in
 {
-  home.packages = [ pkgs.git ];
-
   programs.git = {
     enable = true;
 
