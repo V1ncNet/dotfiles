@@ -75,6 +75,23 @@ sudo darwin-rebuild --rollback
 job except the workflow `flake.yml` on `main`, triggered by
 `pull_request_target`.
 
+On battery power the runner stays off, so GitHub reports it as `offline`
+and the workflow falls back to its other runner. The daemon
+`github-runner-ops-flake-power` reacts to power source changes (and runs
+once at boot). On battery it disables the runner service, so it stays off
+after a reboot, waits until no job is running and then stops it. On AC power it
+enables and starts the runner again. A job that starts during the wait delays
+the stop, and one that starts in the instant between the last check and the
+stop is cut off. Test the script with:
+
+```bash
+darwin/iris/test-github-runner-power.sh
+```
+
+A switch that changes the runner definition loads it regardless of the power
+source. On battery, run `sudo launchctl kickstart system/org.nixos.github-runner-ops-flake-power`
+afterwards.
+
 The runner registers once with a registration token, which expires after an
 hour. Changing `url`, `workDir` or the labels needs a new registration:
 
