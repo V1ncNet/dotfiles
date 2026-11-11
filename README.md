@@ -80,9 +80,13 @@ and the workflow falls back to its other runner. The daemon
 `github-runner-ops-flake-power` reacts to power source changes (and runs
 once at boot). On battery it disables the runner service, so it stays off
 after a reboot, waits until no job is running and then stops it. On AC power it
-enables and starts the runner again. A job that starts during the wait delays
-the stop, and one that starts in the instant between the last check and the
-stop is cut off. Test the script with:
+enables and starts the runner again. Before the stop, the script freezes
+the listener and looks for a job once more, so a job handed over in the
+last moment finishes instead of being cut off. A stop can still cut off a
+job in the few milliseconds between GitHub handing it over and its worker
+process starting. A job queued for the runner but not yet assigned when
+the runner goes offline stays queued until the runner is back. Test the
+script with:
 
 ```bash
 darwin/iris/test-github-runner-power.sh
