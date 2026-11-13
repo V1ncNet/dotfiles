@@ -20,6 +20,10 @@ in
       ".claude/CLAUDE.md".source = "${rules}/claude/CLAUDE.md";
       ".claude/superpowers.md".source = "${rules}/claude/superpowers.md";
       ".agents/AGENTS.md".source = "${rules}/agents/AGENTS.md";
+      ".claude/skills/unslop".source = builtins.path {
+        name = "unslop";
+        path = "${inputs.cursor-plugins}/harness/pstack/claude-code/skills/unslop";
+      };
       ".claude/statusline.sh" = executable ./claude/statusline.sh;
       ".claude/hooks/require-agent-model.sh" = executable ./claude/hooks/require-agent-model.sh;
 

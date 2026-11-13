@@ -183,6 +183,9 @@ otherwise. It provides:
 
 - `~/.claude/CLAUDE.md`, `~/.claude/superpowers.md` and `~/.agents/AGENTS.md`,
   linked from the private flake input `agent-rules`
+- the Claude Code skill `~/.claude/skills/unslop`, linked from the flake
+  input `cursor-plugins` (MIT, `nix flake update cursor-plugins` picks up
+  new versions)
 - the Claude Code hook and status line, and Claude Code defaults merged
   into `~/.claude/settings.json` (plugins, marketplaces, model settings)
 - `~/.config/git/config` with SSH commit signing through
