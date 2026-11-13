@@ -9,6 +9,7 @@ in
   imports = [
     ../../modules/home-manager/git.nix
     ../../modules/claude-code-defaults.nix
+    ../../modules/unslop-skill.nix
   ];
 
   home = {

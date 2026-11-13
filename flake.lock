@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "cursor-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794578225,
+        "narHash": "sha256-wb0pKiFjyWNF4xjEkRuRrWxgNIdD0KT2UD5+BoWByCE=",
+        "owner": "cursor",
+        "repo": "plugins",
+        "rev": "24621dbcc59e205a7faadb0e06d540f91712b5cc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cursor",
+        "repo": "plugins",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -259,6 +275,7 @@
     "root": {
       "inputs": {
         "agent-rules": "agent-rules",
+        "cursor-plugins": "cursor-plugins",
         "git-worktree-init": "git-worktree-init",
         "home-manager": "home-manager",
         "mac-app-util": "mac-app-util",

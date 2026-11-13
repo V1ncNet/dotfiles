@@ -24,6 +24,11 @@
       flake = false;
     };
 
+    cursor-plugins = {
+      url = "github:cursor/plugins";
+      flake = false;
+    };
+
     git-worktree-init = {
       url = "github:V1ncNet/git-worktree-init";
       inputs.nixpkgs.follows = "nixpkgs";
