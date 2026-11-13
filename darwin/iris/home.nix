@@ -9,6 +9,7 @@ in
     ++ (import ../../modules/home-manager-darwin)
     ++ [
       ../../modules/home-manager/worktree-init.nix
+      ../../modules/home-manager/openspec.nix
       ./claude-code.nix
       ./t3-code.nix
     ];
