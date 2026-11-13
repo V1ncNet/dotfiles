@@ -3,11 +3,11 @@
     "agent-rules": {
       "flake": false,
       "locked": {
-        "lastModified": 1794392915,
-        "narHash": "sha256-3TUcaPn2h5ytjCKVjkcrJK4uND5B97wCiSQCT42jw/g=",
+        "lastModified": 1794589881,
+        "narHash": "sha256-ec/76f0FMHMuMuBoGnqACT2mXpieaNDgfLUpqkemjks=",
         "ref": "refs/heads/main",
-        "rev": "386e2ebe90f6218677fe5aabfce44a10af42eced",
-        "revCount": 1,
+        "rev": "b084f01ae353071e33a62ec934c1088d4e465d9f",
+        "revCount": 3,
         "type": "git",
         "url": "ssh://git@github.com/V1ncNet/agent-rules.git"
       },
