@@ -115,11 +115,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792762287,
-        "narHash": "sha256-DnCHIqt0viM2hAmJEGm3OrdOLqsnYmDbfn0dxWL6kAs=",
+        "lastModified": 1794660258,
+        "narHash": "sha256-waBe6o+yrhzw3JB2Ss5J5qeekeVcomZ6b959iH5sqfM=",
         "owner": "V1ncNet",
         "repo": "git-worktree-init",
-        "rev": "803b19f5dbc403506505874322e2afdd680dfabe",
+        "rev": "baf0fe6cdb90e4a3faa5aad0c4406fbd0e5c8a0f",
         "type": "github"
       },
       "original": {
