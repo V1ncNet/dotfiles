@@ -10,6 +10,7 @@ in
     ++ [
       ../../modules/home-manager/worktree-init.nix
       ../../modules/home-manager/openspec.nix
+      ../../modules/openspec-config.nix
       ./claude-code.nix
       ./t3-code.nix
     ];
