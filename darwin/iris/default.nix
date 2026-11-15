@@ -26,6 +26,17 @@
     settings = {
       experimental-features = "nix-command flakes";
       trusted-users = [ "root" "vincent" "@admin" ];
+      sandbox = true;
+      allowed-impure-host-deps = [
+        "/System/Library"
+        "/usr/lib"
+        "/dev"
+        "/bin/sh"
+        "/System"
+        "/usr/bin/osascript"
+        "/bin/echo"
+        "/usr/bin/env"
+      ];
     };
 
     # Builds the Home Manager configurations of the Linux hosts locally
